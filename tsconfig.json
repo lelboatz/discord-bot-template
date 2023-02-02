@@ -1,0 +1,24 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 16",
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["esnext"],
+    "module": "commonjs",
+    "target": "esnext",
+    "outDir": "dist",
+    "types": ["node"],
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": true,
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.json"],
+  "exclude": [
+    "node_modules"
+  ]
+}
