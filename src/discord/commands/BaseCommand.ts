@@ -1,6 +1,5 @@
 import { APIApplicationCommand } from "discord-api-types/v10"
 import { AutocompleteInteraction, CommandInteraction } from "discord.js"
-import Mongo from "../../main/util/Mongo"
 import TemplateBot from "../TemplateBot"
 
 export type ApplicationCommand = Omit<APIApplicationCommand, "id" | "application_id" | "version" | "default_member_permissions"> & Partial<Pick<APIApplicationCommand, "default_member_permissions">>
@@ -10,7 +9,6 @@ export interface CommandOptions {
 export default abstract class BaseCommand {
     protected readonly command: ApplicationCommand
     client: TemplateBot
-    mongo: Mongo
     opts: CommandOptions
 
     protected constructor(
@@ -22,7 +20,6 @@ export default abstract class BaseCommand {
         }
     ) {
         this.client = client
-        this.mongo = client.main.mongo
         this.command = command
         this.opts = opts
     }
