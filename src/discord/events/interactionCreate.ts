@@ -1,7 +1,7 @@
 import TemplateBot from "../TemplateBot"
 import { Interaction } from "discord.js"
 
-module.exports = class {
+export default class {
     client: TemplateBot
     constructor(client: TemplateBot) {
         this.client = client

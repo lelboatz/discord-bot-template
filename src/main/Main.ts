@@ -21,7 +21,7 @@ export default class Main {
 
         // You can change the order of initialization here if you need
         this.client = await init(this)
-        await this.mongo.connect()
+        // await this.mongo.connect()
     }
 
     /*

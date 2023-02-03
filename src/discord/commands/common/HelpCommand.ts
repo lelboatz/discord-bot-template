@@ -26,7 +26,7 @@ export default class HelpCommand extends BaseCommand {
         if (command) {
             const cmd = this.client.commands.get(command)
             if (!cmd) {
-                return interaction.editReply({
+                return interaction.reply({
                     embeds: [
                         {
                             title: "Command not found",
@@ -37,7 +37,7 @@ export default class HelpCommand extends BaseCommand {
                 })
             }
 
-            return interaction.editReply({
+            return interaction.reply({
                 embeds: [
                     {
                         author: {
@@ -66,7 +66,7 @@ export default class HelpCommand extends BaseCommand {
             })
         }
 
-        return interaction.editReply({
+        return interaction.reply({
             embeds: [
                 {
                     author: {
@@ -91,7 +91,7 @@ export default class HelpCommand extends BaseCommand {
     }
 
     autocomplete(interaction: AutocompleteInteraction) {
-        if (interaction.options.getFocused() === "command") {
+        if (interaction.options.getFocused(true)?.name === "command") {
             return interaction.respond(
                 this.client.commands.map(command => {
                     return {

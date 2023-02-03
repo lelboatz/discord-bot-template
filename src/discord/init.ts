@@ -1,6 +1,5 @@
 import TemplateBot from "./TemplateBot"
 import path from "path"
-import fs from "fs"
 import klaw from "klaw"
 import Main from "../main/Main"
 import axios from "axios"
@@ -27,7 +26,7 @@ export const init = async (main: Main) => {
     klaw(`${__dirname}/events`).on("data", file => {
         const event = path.parse(file.path)
         if (event.ext !== ".js") return
-        const err = client.loadEvent(event.dir, event.base)
+        const err = client.loadEvent(event.dir, event.name)
         if (err) console.info(err)
     })
 
