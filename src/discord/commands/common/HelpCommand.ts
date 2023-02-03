@@ -70,7 +70,7 @@ export default class HelpCommand extends BaseCommand {
             embeds: [
                 {
                     author: {
-                        name: `Help Menu - ${this.client.user?.username}}`,
+                        name: `Help Menu - ${this.client.user?.username}`,
                         icon_url: this.client.user?.displayAvatarURL()
                     },
                     description: "For more information about a specific command, type `/help [command]`.",
