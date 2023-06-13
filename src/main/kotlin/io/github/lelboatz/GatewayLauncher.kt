@@ -10,6 +10,5 @@ object GatewayLauncher {
     suspend fun gatewayLaunch(bot: TemplateBotCore) = coroutineScope {
         val totalShards = bot.kord.resources.shards.totalShards
 
-
     }
 }
