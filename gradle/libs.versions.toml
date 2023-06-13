@@ -1,0 +1,29 @@
+[versions]
+kord = "0.9.x-SNAPSHOT"
+exposed = "0.41.1"
+postgresql = "42.6.0"
+discord-interaktions = "432afac85c"
+
+[libraries]
+kord-core = { module = "dev.kord:kord-core", version.ref = "kord" }
+kord-rest = { module = "dev.kord:kord-rest", version.ref = "kord" }
+kord-gateway = { module = "dev.kord:kord-gateway", version.ref = "kord" }
+
+# Shameless plug :)
+interactions = { module = "com.github.myosyn.DiscordInteraKTions:gateway-kord", version.ref = "discord-interaktions"}
+
+# Database implementation
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
+[bundles]
+kord = [
+    "kord-core",
+    "kord-rest",
+    "kord-gateway"
+]
+
+database = [
+    "exposed-core",
+    "postgresql"
+]
