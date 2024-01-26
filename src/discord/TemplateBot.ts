@@ -2,7 +2,7 @@ import { Client, ClientOptions, Collection } from "discord.js"
 import { PathLike } from "fs"
 import path from "path"
 import Main from "../main/Main"
-import BaseCommand from "./commands/BaseCommand"
+import BaseCommand from "./commands/base.command"
 
 // Typically you want to refactor this class and file name to the name of your bot
 export default class TemplateBot extends Client {

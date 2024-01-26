@@ -1,7 +1,7 @@
-import BaseCommand from "../BaseCommand"
+import BaseCommand from "../base.command"
 import TemplateBot from "../../TemplateBot"
 import { ApplicationCommandType, ApplicationCommandOptionType } from "discord-api-types/v10"
-import { AutocompleteInteraction, ChatInputCommandInteraction, PermissionsBitField } from "discord.js"
+import { AutocompleteInteraction, ChatInputCommandInteraction } from "discord.js"
 
 export default class HelpCommand extends BaseCommand {
     constructor(client: TemplateBot) {
@@ -21,7 +21,7 @@ export default class HelpCommand extends BaseCommand {
     }
 
     async execute(interaction: ChatInputCommandInteraction) {
-        const command = interaction.options.getString("command", false)
+        const command = interaction.options.getString("command")
 
         if (command) {
             const cmd = this.client.commands.get(command)

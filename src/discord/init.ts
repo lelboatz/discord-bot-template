@@ -18,7 +18,7 @@ export const init = async (main: Main) => {
     // Load all commands and events, if one fails it will log the error instead of crashing
     klaw(`${__dirname}/commands`).on("data", file => {
         const command = path.parse(file.path)
-        if (command.ext !== ".js" || command.name === "BaseCommand") return
+        if (command.ext !== ".js" || command.name === "base.command") return
         const err = client.loadCommand(command.dir, command.base)
         if (err) console.info(err)
     })
