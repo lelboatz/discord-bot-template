@@ -81,7 +81,7 @@ export default class HelpCommand extends BaseCommand {
                         },
                         {
                             name: "**Notes**",
-                            value: "This bot was created from https://github.com/lelboatz/discord-bot-template. Feel free to use it as a base for your own bot!"
+                            value: "This bot was created from https://github.com/nick00069/discord-bot-template. Feel free to use it as a base for your own bot!"
                         }
                     ],
                     color: 0x006994
