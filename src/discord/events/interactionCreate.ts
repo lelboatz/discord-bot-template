@@ -3,6 +3,7 @@ import { Interaction } from "discord.js"
 
 export default class {
     client: TemplateBot
+
     constructor(client: TemplateBot) {
         this.client = client
     }
@@ -26,6 +27,30 @@ export default class {
             const command = this.client.commands.get(interaction.commandName)
             if (!command) return
             return command.autocomplete(interaction)
+        } else if (interaction.isButton()) {
+            for (const [trigger, onPress] of this.client.buttonListeners) {
+                const [prefix, ...args] = interaction.customId.split("-")
+
+                if (prefix === trigger) {
+                    return onPress(interaction, ...args)
+                }
+            }
+        } else if (interaction.isAnySelectMenu()) {
+            for (const [trigger, onSelect] of this.client.selectMenuListeners) {
+                const [prefix, ...args] = interaction.customId.split("-")
+
+                if (prefix === trigger) {
+                    return onSelect(interaction, ...args)
+                }
+            }
+        } else if (interaction.isModalSubmit()) {
+            for (const [trigger, onSubmit] of this.client.modalListeners) {
+                const [prefix, ...args] = interaction.customId.split("-")
+
+                if (prefix === trigger) {
+                    return onSubmit(interaction, ...args)
+                }
+            }
         }
     }
 }

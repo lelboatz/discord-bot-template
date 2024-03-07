@@ -1,5 +1,5 @@
 import { APIApplicationCommand } from "discord-api-types/v10"
-import { AutocompleteInteraction, CommandInteraction } from "discord.js"
+import { AutocompleteInteraction, CommandInteraction, PermissionFlagsBits } from "discord.js"
 import TemplateBot from "../TemplateBot"
 
 export type ApplicationCommand = Omit<APIApplicationCommand, "id" | "application_id" | "version" | "default_member_permissions"> & Partial<Pick<APIApplicationCommand, "default_member_permissions">>
@@ -22,6 +22,13 @@ export default abstract class BaseCommand {
         this.client = client
         this.command = command
         this.opts = opts
+        this.command = {
+            ...command,
+            // Change this if you want commands to work in DMs by default, or change this on a per-command basis
+            dm_permission: command.dm_permission ?? false,
+            // Change this if you want commands to use a different permission set by default, or change this on a per-command basis
+            default_member_permissions: command.default_member_permissions ?? PermissionFlagsBits.Administrator.toString()
+        }
     }
 
     // Handle all interactions here (chat input or context menu)

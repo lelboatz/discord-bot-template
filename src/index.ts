@@ -10,3 +10,11 @@ import Main from "./main/Main"
      */
     process.exit(1)
 })
+
+process.on("unhandledRejection", error => {
+    console.error("Unhandled Promise Rejection:", error)
+})
+
+process.on("uncaughtException", (error) => {
+    console.error("Unhandled Error:", error)
+})
